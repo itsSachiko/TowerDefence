@@ -203,10 +203,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6baac42553ec4b142a43de8c15b3fc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
-  dmg: 0
-  range: 0
+  fireRate: 0.49
+  dmg: 1
+  range: 6.5
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 256
   bullet: {fileID: 2874004875870746912, guid: 4a1dc7524e792c14b8b8f5e1af1ff809, type: 3}
+  bulletPooler: {fileID: 0}
 --- !u!1 &7100245710068592618
 GameObject:
   m_ObjectHideFlags: 0

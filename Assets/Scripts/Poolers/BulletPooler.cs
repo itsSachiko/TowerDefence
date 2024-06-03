@@ -17,23 +17,23 @@ public class BulletPooler : MonoBehaviour
             x.SetActive(false);
         }
     }
-    public Bullet GetBullet(Transform transform, Transform target)
+    public Bullet GetBullet(Transform towerTransform, Transform target)
     {
         Bullet bull;
         if (bulletList.Count == 0)
         {
-            var x = Instantiate(bulletPref, transform.position, Quaternion.identity);
+            var x = Instantiate(bulletPref, towerTransform.position, Quaternion.identity);
             bull = x.GetComponent<Bullet>();
         }
         else
         {
             bull = bulletList[0];
-            bull.gameObject.SetActive(true);
             bulletList.RemoveAt(0);
 
         }
-
+        bull.transform.position = towerTransform.position;
         bull.target = target;
+        bull.gameObject.SetActive(true);
         return bull;
     }
 }
