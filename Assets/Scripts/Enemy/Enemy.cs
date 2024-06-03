@@ -5,23 +5,38 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IHP
 {
-    [SerializeField] Transform basePos;
+    public Transform baseTransform;
     NavMeshAgent agent;
     public float hp;
     public float HP { get => hp ; set => hp = value; }
     public Transform hpHolder { get => transform; }
 
-    public Vector3 currentDestination;
+    [HideInInspector]public Vector3 startPos;
 
-    public Vector3 dir;
+    void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
+    private void OnEnable()
+    {
+        if(baseTransform == null)
+        {
+            return;
+        }
+        startPos = transform.position;
+        UpdateDestination(baseTransform.position);
+
+
+    }
+
+    private void OnDisable()
+    {
+        EnemyPooler.enemyList.Add(this);
+    }
     public void UpdateDestination(Vector3 newDestination)
     {
         agent.destination = newDestination;
 
-    }
-    private void Update()
-    {
-        dir = (basePos.position - transform.position).normalized;
     }
 
     public void Death()
@@ -39,11 +54,5 @@ public class Enemy : MonoBehaviour, IHP
             Death();
 
         }
-    }
-
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        UpdateDestination(basePos.position);
     }
 }

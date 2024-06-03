@@ -30,16 +30,9 @@ public class ConfusionTower : Tower
 
     IEnumerator ConfusionEffect(Enemy enemy)
     {
-        
-        float confusionTimer = 0f;
-        while(confusionDuration > confusionTimer)
-        {
-            confusionTimer += Time.deltaTime;
-            enemy.UpdateDestination(-enemy.dir);
-            yield return null;
-        }
-
-
+        enemy.UpdateDestination(enemy.startPos);
+        yield return new WaitForSeconds(confusionDuration);
+        enemy.UpdateDestination(enemy.baseTransform.position);
     }
 
 #if UNITY_EDITOR
