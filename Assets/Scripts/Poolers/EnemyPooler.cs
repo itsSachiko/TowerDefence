@@ -8,32 +8,33 @@ public class EnemyPooler : MonoBehaviour
     public float numberOfEnemy;
     public GameObject enemyPref;
     public Transform baseTransform;
+
     private void Awake()
     {
         for (int i = 0; i < numberOfEnemy; i++)
         {
-            var x = Instantiate(enemyPref);
-            enemyList.Add(x.GetComponent<Enemy>());
-            x.SetActive(false);
+            var enemyInstance = Instantiate(enemyPref);
+            enemyList.Add(enemyInstance.GetComponent<Enemy>());
+            enemyInstance.SetActive(false);
         }
     }
-    public Enemy GetEnemy(Transform enemySpawner)
+    public void GetEnemy(Transform enemySpawner)
     {
         Enemy enemy;
-        if (enemyList.Count <= 5)
+        if (enemyList.Count == 0)
         {
-            var x = Instantiate(enemyPref, enemySpawner.position, Quaternion.identity);
-            enemy = x.GetComponent<Enemy>();
+            var enemyInstance = Instantiate(enemyPref, enemySpawner.position, Quaternion.identity);
+            enemy = enemyInstance.GetComponent<Enemy>();
+            enemyInstance.SetActive(false);
         }
         else
         {
             enemy = enemyList[0];
             enemyList.RemoveAt(0);
-
         }
+
         enemy.transform.position = enemySpawner.position;
         enemy.baseTransform = baseTransform;
         enemy.gameObject.SetActive(true);
-        return enemy;
     }
 }

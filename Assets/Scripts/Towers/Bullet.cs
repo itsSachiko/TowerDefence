@@ -32,6 +32,11 @@ public class Bullet : MonoBehaviour
 
     private void OnDisable()
     {
+        if (target == null)
+        {
+            return;
+        }
+
         BulletPooler.bulletList.Add(this);
     }
 
@@ -39,7 +44,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out IHP hp))
         {
-            onHit?.Invoke(hp,this);
+            onHit?.Invoke(hp, this);
             gameObject.SetActive(false);
         }
     }
