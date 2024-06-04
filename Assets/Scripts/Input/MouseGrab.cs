@@ -39,13 +39,10 @@ public class MouseGrab : MonoBehaviour
         Debug.DrawRay(mouseRay.origin, mouseRay.direction * 100, Color.red, 2);
         if (Physics.Raycast(mouseRay, out RaycastHit hit, Mathf.Infinity, ~mask))
         {
-
-            Debug.Log("raycast has hit: " + hit.transform.name, hit.transform);
-            Debug.Log("last hit: " + lastHit.name, lastHit);
             if (isRemoved && hit.transform != lastHit)
             {
                 
-                attachable.Revome(hit.point);
+                attachable.Remove(hit.point);
                 attachable = null;
                 isRemoved = false;
 
@@ -65,7 +62,6 @@ public class MouseGrab : MonoBehaviour
             {
                 if (x.Placer != null && attachable != null && lastHit != hit.transform)
                 {
-                    Debug.LogWarning("gusgishgids");
                     attachable.Attach(hit.transform, x.Placer);
                     attachable = null;
                 }

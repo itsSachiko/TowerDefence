@@ -5,18 +5,21 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IHP
 {
-    public Transform baseTransform;
-    public Transform currentTransform;
-    NavMeshAgent agent;
+    [HideInInspector] public Transform baseTransform;
+    [HideInInspector] public NavMeshAgent agent;
     public float hp;
     public float HP { get => hp; set => hp = value; }
     public Transform hpHolder { get => transform; }
 
     [HideInInspector] public Vector3 startPos;
 
+    public float speed;
+    float ogHP;
+    public float damage;
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        ogHP = hp;
     }
     private void OnEnable()
     {
@@ -27,6 +30,8 @@ public class Enemy : MonoBehaviour, IHP
 
         startPos = transform.position;
         UpdateDestination(baseTransform.position);
+        agent.speed = speed;
+        hp = ogHP;
     }
 
     private void OnDisable()
@@ -41,7 +46,6 @@ public class Enemy : MonoBehaviour, IHP
     public void UpdateDestination(Vector3 newDestination)
     {
         agent.destination = newDestination;
-        Debug.Log(agent.destination);
     }
 
     public void Death()
@@ -58,6 +62,15 @@ public class Enemy : MonoBehaviour, IHP
         {
             Death();
 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent(out IHP hP))
+        {
+            hP.TakeDamage(damage);
+            Death();
         }
     }
 }

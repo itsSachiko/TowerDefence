@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 211161908791567332}
   - component: {fileID: 6222532306127963720}
   - component: {fileID: 985734189328680983}
-  - component: {fileID: 4953435303590636019}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4953435303590636019
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2475551579371403330}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2723348522416405408
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +95,7 @@ GameObject:
   - component: {fileID: 393535163523669712}
   - component: {fileID: 166349435690971234}
   - component: {fileID: 1963785697039932297}
+  - component: {fileID: 50610825661306361}
   m_Layer: 0
   m_Name: Phineas Buff
   m_TagString: Untagged
@@ -212,6 +191,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &50610825661306361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723348522416405408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bcb97b2872d4544a8b6a5d6fcff5973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEnemy: {fileID: 0}
+  removeSpeed: 0
+  timer: 0
 --- !u!1001 &8508726812111076586
 PrefabInstance:
   m_ObjectHideFlags: 0

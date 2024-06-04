@@ -9,9 +9,9 @@ public class ConfusionTower : Tower
     {
         base.Attach(target, placer);
     }
-    public override void Revome(Vector3 targetPos)
+    public override void Remove(Vector3 targetPos)
     {
-        base.Revome(targetPos);
+        base.Remove(targetPos);
     }
 
     public override void Shoot()

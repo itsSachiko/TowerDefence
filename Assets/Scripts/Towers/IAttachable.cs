@@ -7,5 +7,5 @@ public interface IAttachable
     public TowerPlacer Placer { get; set; }
     public void Attach(Transform target, TowerPlacer towerPlacer);
 
-    public void Revome(Vector3 targetPos);
+    public void Remove(Vector3 targetPos);
 }

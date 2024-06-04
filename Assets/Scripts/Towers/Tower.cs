@@ -12,20 +12,22 @@ public class Tower : MonoBehaviour, IAttachable
     protected float timer = 0;
 
     public LayerMask enemyMask;
-    public GameObject bullet;
-
     protected Transform targetEnemy;
 
     public BulletPooler bulletPooler;
 
     protected Bullet currentBullet;
+
+    public Action<IHP> buffs;
+
     public TowerPlacer Placer { get; set; }
     public virtual void Attach(Transform target, TowerPlacer placer)
     {
         this.timer = 0;
         this.Placer = placer;
         Placer.onTowerTick += Shoot;
-
+        Placer.onAttach += UpdateBuffs;
+        UpdateBuffs();
         this.transform.position = target.position + Vector3.up;
         if(Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit))
         {
@@ -34,11 +36,14 @@ public class Tower : MonoBehaviour, IAttachable
                 hit.transform.gameObject.layer = 7;
             }
         }
+
     }
 
-    public virtual void Revome(Vector3 targetPos)
+    public virtual void Remove(Vector3 targetPos)
     {
         this.Placer.onTowerTick -= Shoot;
+        Placer.onAttach -= UpdateBuffs;
+        UpdateBuffs();
         if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit))
         {
 
@@ -62,6 +67,11 @@ public class Tower : MonoBehaviour, IAttachable
 
         else
         {
+            Vector3 dir = targetEnemy.position - this.transform.position;
+            dir.y = transform.position.y;
+            dir = dir.normalized;
+            float angle = Vector3.Angle(this.transform.forward, dir);
+            transform.rotation = Quaternion.LookRotation(dir);
             if(this.timer < this.fireRate)
             {
                 this.timer += Time.deltaTime;
@@ -78,6 +88,7 @@ public class Tower : MonoBehaviour, IAttachable
     public virtual void OnHitEffect(IHP iHP, Bullet bullet)
     {
         iHP.TakeDamage(dmg);
+        buffs?.Invoke(iHP);
     }
 
     public void RangeCheck()
@@ -87,6 +98,11 @@ public class Tower : MonoBehaviour, IAttachable
         {
             this.targetEnemy = coll[0].transform;
         }
+    }
+
+    public void UpdateBuffs()
+    {
+        buffs = Placer.buffEffect;
     }
 
 #if UNITY_EDITOR

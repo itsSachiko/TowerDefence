@@ -9,9 +9,9 @@ public class ExplosiveTower : Tower
     {
         base.Attach(target, placer);
     }
-    public override void Revome(Vector3 targetPos)
+    public override void Remove(Vector3 targetPos)
     {
-        base.Revome(targetPos);
+        base.Remove(targetPos);
     }
 
     public override void Shoot()
@@ -32,7 +32,7 @@ public class ExplosiveTower : Tower
 
             if (coll.transform.TryGetComponent(out IHP hP))
             {
-
+                buffs?.Invoke(hP);
                 hP.TakeDamage(dmg);
             }
         }
