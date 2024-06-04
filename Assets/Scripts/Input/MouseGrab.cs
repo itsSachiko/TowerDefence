@@ -15,6 +15,8 @@ public class MouseGrab : MonoBehaviour
 
     Transform lastHit;
 
+    public Material clickedTower;
+
     private void Awake()
     {
         if (actions == null)
@@ -52,7 +54,7 @@ public class MouseGrab : MonoBehaviour
             {
                 if (attachable != null)
                 {
-
+                   
                     attachable.Attach(hit.transform, towerPlacer);
                     attachable = null;
                 }

@@ -204,8 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEnemy: {fileID: 0}
-  damageOverTime: 0
-  timer: 0
+  damageOverTime: 2
+  timer: 4
 --- !u!1 &8959917934223306496
 GameObject:
   m_ObjectHideFlags: 0
