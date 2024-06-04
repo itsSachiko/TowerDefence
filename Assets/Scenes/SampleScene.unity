@@ -1266,10 +1266,6 @@ PrefabInstance:
       value: PerryTower (2)
       objectReference: {fileID: 0}
     - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
-      propertyPath: dmg
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
       propertyPath: bulletPooler
       value: 
       objectReference: {fileID: 260710515}
@@ -2406,10 +2402,6 @@ PrefabInstance:
       value: PerryTower (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
-      propertyPath: dmg
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
       propertyPath: bulletPooler
       value: 
       objectReference: {fileID: 260710515}
@@ -2996,10 +2988,6 @@ PrefabInstance:
       value: PerryTower
       objectReference: {fileID: 0}
     - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
-      propertyPath: dmg
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6144856878717820582, guid: a89cc8d24949f1e4d8377e9959d6be77, type: 3}
       propertyPath: bulletPooler
       value: 
       objectReference: {fileID: 260710515}
@@ -3027,7 +3015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50610825661306361, guid: f53d9c4f94826054d849ad870abcdc2d, type: 3}
       propertyPath: removeSpeed
-      value: 0.54
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2723348522416405408, guid: f53d9c4f94826054d849ad870abcdc2d, type: 3}
       propertyPath: m_Name

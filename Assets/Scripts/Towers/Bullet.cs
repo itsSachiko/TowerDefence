@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Transform target;
+    [HideInInspector]public Transform target;
     public Action<IHP, Bullet> onHit;
 
     Vector3 startPos;
@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         startPos = transform.position;
+        timer = 0;
     }
 
     private void FixedUpdate()
@@ -36,7 +37,7 @@ public class Bullet : MonoBehaviour
         {
             return;
         }
-
+        target = null;
         BulletPooler.bulletList.Add(this);
     }
 

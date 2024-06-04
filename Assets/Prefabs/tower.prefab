@@ -209,7 +209,6 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
-  bullet: {fileID: 2874004875870746912, guid: 4a1dc7524e792c14b8b8f5e1af1ff809, type: 3}
   bulletPooler: {fileID: 0}
 --- !u!1 &7100245710068592618
 GameObject:

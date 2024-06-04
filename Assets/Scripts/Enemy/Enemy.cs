@@ -45,6 +45,10 @@ public class Enemy : MonoBehaviour, IHP
     }
     public void UpdateDestination(Vector3 newDestination)
     {
+        if (agent == null || gameObject.activeSelf == false)
+        {
+            return; 
+        }
         agent.destination = newDestination;
     }
 

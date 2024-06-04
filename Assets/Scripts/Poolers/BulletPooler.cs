@@ -20,7 +20,7 @@ public class BulletPooler : MonoBehaviour
     public Bullet GetBullet(Transform towerTransform, Transform target)
     {
         Bullet bull;
-        if (bulletList.Count == 0)
+        if (bulletList.Count <= 0)
         {
             var x = Instantiate(bulletPref, towerTransform.position, Quaternion.identity);
             bull = x.GetComponent<Bullet>();
